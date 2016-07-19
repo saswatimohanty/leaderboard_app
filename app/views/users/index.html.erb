@@ -15,18 +15,26 @@
 				<th> Name </th>
 				<th> Github Username </th>
 				<th> Total Contributions </th>
+				<th> Remove from Leaderboard </th>
 			</tr>
 		</thead>
 
 		<tbody>
 			<% @users.each_with_index do |user, index| %>
 				<tr>
-					<th> <%= "#{index + 1}" %> </th>
-					<th> <%= "#{user.name}" %> </th>
-					<th> <%= "#{user.username}" %> </th>
-					<th> <%= "#{user.total_commits}" %> </th>
+					<th> <%= index + 1 %> </th>
+					<th> <%= user.name %> </th>
+					<th> <%= user.username %> </th>
+					<th> <%= user.total_commits %> </th>
+					<th> 
+						<%= link_to('Delete', user, class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure to remove?' }) %>
+					</th>
 				</tr>
 			<% end %>
 		</tbody>
 	</table>
+</div>
+
+<div class='button-position'>
+  <%= link_to "Refresh the Leaderboard", update_users_path, class: 'button' %>
 </div>

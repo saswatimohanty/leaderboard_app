@@ -19,4 +19,11 @@ class User < ActiveRecord::Base
   	commits_service = GithubCommitService.new(self)
   	total_commits = commits_service.find_user_total_commits_in_last_year(self)
   end
+
+  def self.update_github_information_for_all
+  	users = User.all
+    users.each do |user|
+      user.update_github_information
+    end
+  end
 end

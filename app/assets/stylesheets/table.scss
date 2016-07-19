@@ -8,7 +8,7 @@
 }
 
 .leaderboard-table td, .leaderboard-table th {
-  text-align: left;
+  text-align: center;
   padding: 8px;
 }
 
@@ -20,4 +20,8 @@
   padding-top: 12px;
   padding-bottom: 12px;
   color: #4C3F2D;
+}
+
+.button-position {
+	padding-left: 40%;
 }
