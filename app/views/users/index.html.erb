@@ -2,16 +2,6 @@
 
 <div class='left-section col-md-6'>
 	<%= form_for(User.new, html: {method: 'post'})  do |f| %>
-		<div class = 'col-md-11'>
-  		<%= f.label :name, 'Your Name' %>
-  		<%= f.text_field :name, placeholder: 'Enter Your Name', class: 'form-control' %>
-		</div>
-		<div class = 'col-md-11'>
-  		<%= f.label :username, 'GitHub Username' %>
-  		<%= f.text_field :username, placeholder: 'Your GitHub Username', class: 'form-control' %>
-		</div>
-		<div class = 'col-md-11'>
-  		<%= f.submit 'Add to Leaderboard!', class: 'button' %>
-		</div>
+		<%= render partial: 'users/new', locals: {f: f} %>
 	<% end %>
 </div>
