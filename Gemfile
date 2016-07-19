@@ -3,8 +3,6 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5.1'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -13,6 +11,27 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
+
+
+# Use mysql22 as the database for Active Record
+gem 'mysql2'
+gem 'redis', '3.2.1'
+# Leaderboards backed by Redis in Ruby.
+gem 'leaderboard'
+# Sass-powered version of Bootstrap 3, ready to drop right into your Sass powered applications.
+gem 'bootstrap-sass', '3.2.0.0'
+# For pagination
+gem 'kaminari'
+# For searching documents via XPath or CSS3 selectors.
+gem 'nokogiri' #, '~> 1.5.5'
+# For using github API
+gem 'github_api'
+# For github contributions statistics
+gem 'githubstats'
+# Hurley connection that respects HTTP cache, by checking expiration and validation of the stored responses
+gem 'hurley-http-cache'
+gem 'pry'
+
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -42,6 +61,6 @@ group :development do
   gem 'web-console', '~> 2.0'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
+  # gem 'spring'
 end
 
