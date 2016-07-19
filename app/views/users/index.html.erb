@@ -5,3 +5,28 @@
 		<%= render partial: 'users/new', locals: {f: f} %>
 	<% end %>
 </div>
+
+<div>
+	<h3> Leaderboard </h3>
+	<table class='leaderboard-table'>
+		<thead>
+			<tr>
+				<th> Rank as per commits </th>
+				<th> Name </th>
+				<th> Github Username </th>
+				<th> Total Contributions </th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<% @users.each_with_index do |user, index| %>
+				<tr>
+					<th> <%= "#{index + 1}" %> </th>
+					<th> <%= "#{user.name}" %> </th>
+					<th> <%= "#{user.username}" %> </th>
+					<th> <%= "#{user.total_commits}" %> </th>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>

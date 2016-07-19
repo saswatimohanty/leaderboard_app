@@ -1,0 +1,23 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+.leaderboard-table {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.leaderboard-table td, .leaderboard-table th {
+  text-align: left;
+  padding: 8px;
+}
+
+.leaderboard-table tr:hover {
+	background-color: #F4A460;
+}
+
+.leaderboard-table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  color: #4C3F2D;
+}
