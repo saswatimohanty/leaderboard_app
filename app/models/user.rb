@@ -12,7 +12,8 @@ class User < ActiveRecord::Base
 
   def update_github_information
   	self.total_commits = get_total_commits
-  	self.public_repos = get_public_repos
+  	self.public_repos = get_public_repos 
+  	get_rank
   	self.save
   end
 
@@ -32,5 +33,10 @@ class User < ActiveRecord::Base
     users.each do |user|
       user.update_github_information
     end
+  end
+
+  def get_rank
+  	$leaderboard.rank_member(self.username, self.total_commits)
+    $leaderboard.rank_for(self.username) 
   end
 end

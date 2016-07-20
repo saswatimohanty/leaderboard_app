@@ -1,7 +1,7 @@
 class UsersController <ApplicationController
 
 	def index
-    @users = User.all
+    @users = User.all.sort_by{|u| $leaderboard.rank_for(u.username)}
   end
 
 	def create

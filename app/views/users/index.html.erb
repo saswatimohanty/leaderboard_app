@@ -21,9 +21,9 @@
 		</thead>
 
 		<tbody>
-			<% @users.each_with_index do |user, index| %>
+			<% @users.each do |user| %>
 				<tr>
-					<th> <%= index + 1 %> </th>
+					<th> <%= user.get_rank %> </th>
 					<th> <%= user.name %> </th>
 					<th> <%= link_to user.username, "https://github.com/#{user.username}" %> </th>
 					<th> <%= user.public_repos %> Repos </th>
