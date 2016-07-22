@@ -5,12 +5,12 @@ class UsersController <ApplicationController
   end
 
 	def create
-    user = User.new(user_params)
+    @user = User.new(user_params)
     @users = User.all
 
-    if user.github_user?
-      if user.save
-        user.update_github_information
+    if @user.github_user?
+      if @user.save
+        GithubInformationWorker.perform_async
         flash[:success] = 'Successfully added user. Check rank now!'
       else
         flash[:danger] = 'Please enter your name and github username.'
@@ -23,15 +23,15 @@ class UsersController <ApplicationController
   end
 
   def destroy
-  	user = User.find(params[:id])
-  	if user.destroy
-  		flash[:success] = "#{user.name} with github username '#{user.username}' is removed from Leaderboard"
+  	@user = User.find(params[:id])
+  	if @user.destroy
+  		flash[:success] = "#{@user.name} with github username '#{@user.username}' is removed from Leaderboard"
   		redirect_to root_path
   	end
   end
 
   def update_users
-  	User.update_github_information_for_all
+  	GithubInformationWorker.perform_async
   	flash[:success] = 'Leaderboard is updated successfully'
     redirect_to root_path
   end

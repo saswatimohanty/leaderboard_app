@@ -31,6 +31,8 @@ gem 'githubstats'
 # Hurley connection that respects HTTP cache, by checking expiration and validation of the stored responses
 gem 'hurley-http-cache'
 gem 'pry'
+gem 'sidekiq'
+gem 'puma'
 
 
 # Use jquery as the JavaScript library

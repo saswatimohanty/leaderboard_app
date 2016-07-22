@@ -11,7 +11,6 @@
 	<table class='leaderboard-table'>
 		<thead>
 			<tr>
-				<th> Rank as per commits </th>
 				<th> Name </th>
 				<th> Github Username </th>
 				<th> Public Repositories </th>
@@ -23,13 +22,12 @@
 		<tbody>
 			<% @users.each do |user| %>
 				<tr>
-					<th> <%= user.get_rank %> </th>
 					<th> <%= user.name %> </th>
 					<th> <%= link_to user.username, "https://github.com/#{user.username}" %> </th>
 					<th> <%= user.public_repos %> Repos </th>
 					<th> <%= user.total_commits %> Commits </th>
 					<th> 
-						<%= link_to('Delete', user, class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure to remove?' }) %>
+						<%= link_to('Delete', user, class: 'btn btn-danger remove', method: :delete, data: { confirm: 'Are you sure to remove?' }) %>
 					</th>
 				</tr>
 			<% end %>
