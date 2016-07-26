@@ -4,7 +4,7 @@ class TotalCommitsWorker
 
 	def perform(user_id)
 		user = User.find_by(id: user_id)
-		commits_service = GithubCommitService.new(user)
+		commits_service = GithubCommitCounter.new(user)
   	total_commits = commits_service.find_user_total_commits_in_last_year(user)
   	user.total_commits = total_commits
   	user.save

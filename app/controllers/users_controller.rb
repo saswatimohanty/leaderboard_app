@@ -10,7 +10,7 @@ class UsersController <ApplicationController
 
     if @user.github_user?
       if @user.save
-        GithubInformationWorker.perform_async
+        GithubWorker.perform_async
         flash[:success] = 'Successfully added user. Check rank now!'
       else
         flash[:danger] = 'Please enter your name and github username.'
@@ -31,7 +31,7 @@ class UsersController <ApplicationController
   end
 
   def update_users
-  	GithubInformationWorker.perform_async
+  	GithubWorker.perform_async
   	flash[:success] = 'Leaderboard is updated successfully'
     redirect_to root_path
   end

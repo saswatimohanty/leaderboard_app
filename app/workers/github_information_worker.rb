@@ -1,14 +1,14 @@
 class GithubInformationWorker
 	include Sidekiq::Worker
-  sidekiq_options retry: false
+	sidekiq_options retry: false
 
-  def perform
-  	users = User.all
-    users.each do |user|
-    	$leaderboard.rank_member(user.username, user.total_commits)
-   	 	$leaderboard.rank_for(user.username)
-      TotalCommitsWorker.perform_async(user.id)
-      TotalReposWorker.perform_async(user.id)
-    end
-  end
+	def perform(user_id)
+		user = User.find_by(id: user_id)
+		repos_service = GithubInformationRetriever.new(user)
+  	public_repos = repos_service.find_user_public_repos(user)
+  	user.public_repos = public_repos.count
+  	followers = repos_service.find_followers(user) 
+  	user.followers = followers.count
+  	user.save
+	end
 end

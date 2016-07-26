@@ -1,4 +1,4 @@
-class GithubCommitService
+class GithubCommitCounter
 	attr_reader :connection
 
 	def initialize(user)
