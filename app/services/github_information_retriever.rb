@@ -4,10 +4,10 @@ class GithubInformationRetriever
 	end
 
 	def find_user_public_repos(user)
-  	@repos = @github.repos.list user: "#{user.username}"
+  	@github.repos.list user: "#{user.username}"
 	end
 
 	def find_followers(user)
-		@followers = @github.users.followers.list "#{user.username}"
+		@github.users.followers.list "#{user.username}"
 	end
 end

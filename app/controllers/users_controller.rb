@@ -31,7 +31,11 @@ class UsersController <ApplicationController
   end
 
   def update_users
-  	GithubWorker.perform_async
+    @users = User.all
+    @users.each do |user|
+    	$leaderboard.rank_member(user.username, user.total_commits)
+      $leaderboard.rank_for(user.username)
+    end
   	flash[:success] = 'Leaderboard is updated successfully'
     redirect_to root_path
   end

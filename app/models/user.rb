@@ -9,4 +9,9 @@ class User < ActiveRecord::Base
     response = Net::HTTP.get_response(uri)
     response.code == '404' ? false : true
   end
+
+  def get_rank
+  	leaderboard_hash = $leaderboard.around_me(self.username)
+  	all_ranks = leaderboard_hash.map { |r| r[:rank] }
+  end
 end
