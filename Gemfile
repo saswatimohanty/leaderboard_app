@@ -30,9 +30,14 @@ gem 'github_api'
 gem 'githubstats'
 # Hurley connection that respects HTTP cache, by checking expiration and validation of the stored responses
 gem 'hurley-http-cache'
+# For debugging
 gem 'pry'
+# For background processing
 gem 'sidekiq'
+# For simple, fast, and highly concurrent server
 gem 'puma'
+# For login using github
+gem 'omniauth-github'
 
 
 # Use jquery as the JavaScript library
