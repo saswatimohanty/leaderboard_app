@@ -34,6 +34,8 @@ gem 'pry'
 gem 'sidekiq'
 # For simple, fast, and highly concurrent server
 gem 'puma'
+# Runs a thread alongside Sidekiq workers to schedule jobs at specified times
+gem 'sidekiq-cron'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

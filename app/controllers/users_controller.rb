@@ -10,8 +10,7 @@ class UsersController <ApplicationController
 
     if @user.github_user?
       if @user.save
-        TotalCommitsWorker.perform_async(@user.id)
-        flash[:success] = 'Successfully added user. Check rank now!'
+        flash[:success] = 'Successfully added user. You will be ranked as per contributions.'
       elsif $leaderboard.check_member?(@user.username)
         flash[:danger] = 'This Github user is already on leaderboard'
       else
@@ -35,14 +34,14 @@ class UsersController <ApplicationController
   def update_users
     @users = User.all
     @users.each do |user|
-    	$leaderboard.rank_member(user.username, user.total_commits)
+      $leaderboard.rank_member(user.username, user.total_commits)
       $leaderboard.rank_for(user.username)
       TotalCommitsWorker.perform_async(user.id)
     end
-  	flash[:success] = 'Leaderboard is updated successfully'
+    flash[:success] = 'Leaderboard is updated successfully'
     redirect_to root_path
   end
-
+  
   private
 
   	def user_params
