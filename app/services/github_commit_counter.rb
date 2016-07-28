@@ -12,4 +12,8 @@ class GithubCommitCounter
 	def find_user_total_commits_in_last_year(user)
     @stats.data.scores.reduce(:+)
   end
+
+  def find_todays_commits(user)
+  	@stats.data.today
+  end
 end

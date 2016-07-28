@@ -21,9 +21,7 @@ gem 'leaderboard'
 # Sass-powered version of Bootstrap 3, ready to drop right into your Sass powered applications.
 gem 'bootstrap-sass', '3.2.0.0'
 # For pagination
-gem 'kaminari'
-# For searching documents via XPath or CSS3 selectors.
-gem 'nokogiri' #, '~> 1.5.5'
+gem 'will_paginate'
 # For using github API
 gem 'github_api'
 # For github contributions statistics
@@ -36,9 +34,6 @@ gem 'pry'
 gem 'sidekiq'
 # For simple, fast, and highly concurrent server
 gem 'puma'
-# For login using github
-gem 'omniauth-github'
-
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

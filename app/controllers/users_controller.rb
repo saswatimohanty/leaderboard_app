@@ -1,7 +1,7 @@
 class UsersController <ApplicationController
 
 	def index
-    @users = User.all.sort_by{|u| $leaderboard.rank_for(u.username)}
+    @users = User.all.order(total_commits: :desc)
   end
 
 	def create
@@ -10,8 +10,10 @@ class UsersController <ApplicationController
 
     if @user.github_user?
       if @user.save
-        GithubWorker.perform_async
+        TotalCommitsWorker.perform_async(@user.id)
         flash[:success] = 'Successfully added user. Check rank now!'
+      elsif $leaderboard.check_member?(@user.username)
+        flash[:danger] = 'This Github user is already on leaderboard'
       else
         flash[:danger] = 'Please enter your name and github username.'
       end
@@ -35,6 +37,7 @@ class UsersController <ApplicationController
     @users.each do |user|
     	$leaderboard.rank_member(user.username, user.total_commits)
       $leaderboard.rank_for(user.username)
+      TotalCommitsWorker.perform_async(user.id)
     end
   	flash[:success] = 'Leaderboard is updated successfully'
     redirect_to root_path
