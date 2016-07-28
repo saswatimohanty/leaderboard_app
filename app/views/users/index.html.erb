@@ -11,6 +11,7 @@
 	<table class='leaderboard-table'>
 		<thead>
 			<tr>
+				<th> Rank </th>
 				<th> Name </th>
 				<th> Github Username </th>
 				<th> Today's Commits </th>
@@ -20,8 +21,9 @@
 		</thead>
 
 		<tbody>
-			<% @users.each do |user| %>
+			<% @users.each_with_index do |user, index| %>
 				<tr>
+					<th> <%= index + 1 %> </th>
 					<th> <%= user.name %> </th>
 					<th> <%= link_to user.username, "https://github.com/#{user.username}" %> </th>
 					<th> <%= user.commits_made_today %> Commits </th>
