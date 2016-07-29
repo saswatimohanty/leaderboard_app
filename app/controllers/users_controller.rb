@@ -38,7 +38,6 @@ class UsersController <ApplicationController
       $leaderboard.rank_for(user.username)
       TotalCommitsWorker.perform_async(user.id)
     end
-    flash[:success] = 'Leaderboard is updated successfully'
     redirect_to root_path
   end
 
