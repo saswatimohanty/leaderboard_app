@@ -5,9 +5,10 @@
 #   gem 'sqlite3'
 #
 default: &default
-  adapter: postgresql
+  adapter: mysql2
   pool: 5
   timeout: 5000
+  
 
 development:
   <<: *default
@@ -15,6 +16,7 @@ development:
 
 production:
   adapter: postgresql
+  encoding: unicode
   database: leaderboard_app
 
 # Warning: The database defined as "test" will be erased and

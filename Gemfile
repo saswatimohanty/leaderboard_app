@@ -14,7 +14,7 @@ gem 'coffee-rails', '~> 4.1.0'
 
 
 # Use pg as the database for Active Record
-gem 'pg'
+gem 'mysql2'
 gem 'redis', '3.2.1'
 # Leaderboards backed by Redis in Ruby.
 gem 'leaderboard'
@@ -36,8 +36,12 @@ gem 'sidekiq'
 gem 'puma'
 # Runs a thread alongside Sidekiq workers to schedule jobs at specified times
 gem 'sidekiq-cron'
-# To enable all platform features
-gem 'rails_12factor', group: :production
+
+group :production do
+	# To enable all platform features
+	gem 'rails_12factor'
+	gem 'pg'
+end
 
 
 # Use jquery as the JavaScript library
