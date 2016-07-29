@@ -41,7 +41,7 @@ class UsersController <ApplicationController
     flash[:success] = 'Leaderboard is updated successfully'
     redirect_to root_path
   end
-  
+
   private
 
   	def user_params

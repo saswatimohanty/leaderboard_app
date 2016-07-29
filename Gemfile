@@ -13,8 +13,8 @@ gem 'coffee-rails', '~> 4.1.0'
 # gem 'therubyracer', platforms: :ruby
 
 
-# Use mysql22 as the database for Active Record
-gem 'mysql2'
+# Use pg as the database for Active Record
+gem 'pg'
 gem 'redis', '3.2.1'
 # Leaderboards backed by Redis in Ruby.
 gem 'leaderboard'

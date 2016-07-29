@@ -22,5 +22,7 @@ module LeaderboardApp
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    # config.cache_store = :redis_store, 'redis://127.0.0.1', { expires_in: 90.minutes }
   end
 end
