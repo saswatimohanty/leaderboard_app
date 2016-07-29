@@ -13,6 +13,7 @@ gem 'coffee-rails', '~> 4.1.0'
 # gem 'therubyracer', platforms: :ruby
 
 gem 'redis', '3.2.1'
+gem 'hiredis'
 # Leaderboards backed by Redis in Ruby.
 gem 'leaderboard'
 # Sass-powered version of Bootstrap 3, ready to drop right into your Sass powered applications.
