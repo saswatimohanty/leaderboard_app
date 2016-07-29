@@ -36,6 +36,9 @@ gem 'sidekiq'
 gem 'puma'
 # Runs a thread alongside Sidekiq workers to schedule jobs at specified times
 gem 'sidekiq-cron'
+# To enable all platform features
+gem 'rails_12factor', group: :production
+
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
