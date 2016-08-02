@@ -1,15 +1,17 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+h3 {
+  margin: 0; 
+  width: 39%;
+  margin-bottom: 2%;
+  margin-left: 28%;
+}
+
 .left-section {
   float: left;
   padding-top: 4%;
   position: relative;
-}
-
-.h3-position{
-  margin-top: 20%;
-  margin-left: 32%;
 }
 
 .button {

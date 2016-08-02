@@ -13,4 +13,4 @@ class GithubWorker
   end
 end
 
-Sidekiq::Cron::Job.create(name: 'Github worker - every 1min', cron: '*/1 * * * *', class: 'GithubWorker')
+Sidekiq::Cron::Job.create(name: 'Github worker - every day', cron: '0 18 * * *', class: 'GithubWorker')

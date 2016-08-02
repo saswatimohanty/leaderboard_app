@@ -1,4 +1,5 @@
 class UsersController <ApplicationController
+  include LeaderboardMethod
 
 	def index
     @users = User.all.order(total_commits: :desc)
@@ -9,8 +10,11 @@ class UsersController <ApplicationController
 
     if @user.github_user?
       if @user.save
+        TotalCommitsWorker.perform_async(@user.id)
+        leaderboard.rank_member(@user.username, @user.total_commits)
+        leaderboard.rank_for(@user.username)
         flash[:success] = I18n.t 'user.success.created'
-      elsif $leaderboard.check_member?(@user.username)
+      elsif leaderboard.check_member?(@user.username)
         flash[:danger] = I18n.t 'user.error.already_present'
       else
         flash[:danger] = I18n.t 'user.error.not_created'

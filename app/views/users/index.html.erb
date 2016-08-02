@@ -1,13 +1,13 @@
 <% provide(:title, "Github Users") %>
 
-<div class='left-section col-md-6'>
+<div class='left-section'>
 	<%= form_for(User.new, html: {method: 'post'})  do |f| %>
 		<%= render partial: 'users/new', locals: {f: f} %>
 	<% end %>
 </div>
 
+<h3> Leaderboard as per Github Contributions </h3>
 <div>
-	<div class='h3-position'> <h3> Leaderboard as per Github Contributions </h3> </div>
 	<table class='leaderboard-table'>
 		<thead>
 			<tr>
@@ -23,14 +23,14 @@
 		<tbody>
 			<% @users.each_with_index do |user, index| %>
 				<tr>
-					<th> <%= index + 1 %> </th>
-					<th> <%= user.name %> </th>
-					<th> <%= link_to user.username, "https://github.com/#{user.username}" %> </th>
-					<th> <%= user.commits_made_today %> Commits </th>
-					<th> <%= user.total_commits %> Commits </th>
-					<th> 
+					<td> <%= index + 1 %> </td>
+					<td> <%= user.name %> </td>
+					<td> <%= link_to user.username, "https://github.com/#{user.username}" %> </td>
+					<td> <%= user.commits_made_today %> Commits </td>
+					<td> <%= user.total_commits %> Commits </td>
+					<td> 
 						<%= link_to('Delete', user, class: 'btn btn-danger remove', method: :delete, data: { confirm: 'Are you sure to remove?' }) %>
-					</th>
+					</td>
 				</tr>
 			<% end %>
 		</tbody>
