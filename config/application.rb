@@ -18,11 +18,13 @@ module LeaderboardApp
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
-    # config.i18n.default_locale = :de
+    # config.i18n.default_locale = :en
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
 
     # config.cache_store = :redis_store, 'redis://127.0.0.1', { expires_in: 90.minutes }
+    
+    config.autoload_paths += %W(#{config.root}/lib)
   end
 end

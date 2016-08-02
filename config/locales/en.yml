@@ -21,3 +21,11 @@
 
 en:
   hello: "Hello world"
+
+  user:
+    success:
+      created: 'Successfully added user. Ranking will be as per contributions.'
+    error:
+      not_created: 'Please enter your name and github username.'
+      already_present: 'This Github user is already on leaderboard'
+      invalid_github_username: 'This GitHub user doesnot exist. Please enter a valid github user.'
