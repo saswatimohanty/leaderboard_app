@@ -3,7 +3,8 @@ class GithubCommitCounter
 
   def initialize(user)
     @client = Hurley::Client.new("https://api.github.com")
-    @client.connection = Hurley::HttpCache.new
+    @connection = @client.connection
+    @connection = Hurley::HttpCache.new
     @stats = GithubStats.new(user.username)
     @user = user
   end
