@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
-	validates :name, presence: true
-	validates :username, presence: true, uniqueness: true
+  validates :name, presence: true
+  validates :username, presence: true, uniqueness: true
 
   def github_user?
     uri = URI("https://github.com/#{self.username}/")
@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   end
 
   def get_rank
-  	leaderboard_hash = $leaderboard.around_me(self.username)
-  	all_ranks = leaderboard_hash.map { |r| r[:rank] }
+    leaderboard_hash = $leaderboard.around_me(self.username)
+    all_ranks = leaderboard_hash.map { |r| r[:rank] }
   end
 end

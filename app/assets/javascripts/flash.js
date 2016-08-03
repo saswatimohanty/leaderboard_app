@@ -1,8 +1,8 @@
 var ready;
 ready = function() {
-	setTimeout(function() {
-		$('#flash').fadeOut(1000);
-	}, 3000);
+  setTimeout(function() {
+    $('#flash').fadeOut(1000);
+  }, 3000);
 };
 
 $(document).ready(ready);

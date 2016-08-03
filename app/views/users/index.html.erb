@@ -1,38 +1,38 @@
 <% provide(:title, "Github Users") %>
 
 <div class='left-section'>
-	<%= form_for(User.new, html: {method: 'post'})  do |f| %>
-		<%= render partial: 'users/new', locals: {f: f} %>
-	<% end %>
+  <%= form_for(User.new, html: {method: 'post'})  do |f| %>
+    <%= render partial: 'users/new', locals: {f: f} %>
+  <% end %>
 </div>
 
 <h3> Leaderboard as per Github Contributions </h3>
 <div>
-	<table class='leaderboard-table'>
-		<thead>
-			<tr>
-				<th> Rank </th>
-				<th> Name </th>
-				<th> Github Username </th>
-				<th> Today's Commits </th>
-				<th> Commits Since <%= Time.now.day %>/<%= Time.now.month %>/<%= Time.now.year - 1 %> </th>
-				<th> Remove from Leaderboard </th>
-			</tr>
-		</thead>
+  <table class='leaderboard-table'>
+    <thead>
+      <tr>
+        <th> Rank </th>
+        <th> Name </th>
+        <th> Github Username </th>
+        <th> Today's Commits </th>
+        <th> Commits Since <%= Time.now.day %>/<%= Time.now.month %>/<%= Time.now.year - 1 %> </th>
+        <th> Remove from Leaderboard </th>
+      </tr>
+    </thead>
 
-		<tbody>
-			<% @users.each_with_index do |user, index| %>
-				<tr>
-					<td> <%= index + 1 %> </td>
-					<td> <%= user.name %> </td>
-					<td> <%= link_to user.username, "https://github.com/#{user.username}" %> </td>
-					<td> <%= user.commits_made_today %> Commits </td>
-					<td> <%= user.total_commits %> Commits </td>
-					<td> 
-						<%= link_to('Delete', user, class: 'btn btn-danger remove', method: :delete, data: { confirm: 'Are you sure to remove?' }) %>
-					</td>
-				</tr>
-			<% end %>
-		</tbody>
-	</table>
+    <tbody>
+      <% @users.each_with_index do |user, index| %>
+        <tr>
+          <td> <%= index + 1 %> </td>
+          <td> <%= user.name %> </td>
+          <td> <%= link_to user.username, "https://github.com/#{user.username}" %> </td>
+          <td> <%= user.commits_made_today %> Commits </td>
+          <td> <%= user.total_commits %> Commits </td>
+          <td> 
+            <%= link_to('Delete', user, class: 'btn btn-danger remove', method: :delete, data: { confirm: 'Are you sure to remove?' }) %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>

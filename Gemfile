@@ -36,9 +36,9 @@ gem 'puma'
 gem 'sidekiq-cron'
 
 group :production do
-	# To enable all platform features
-	gem 'rails_12factor'
-	gem 'pg'
+  # To enable all platform features
+  gem 'rails_12factor'
+  gem 'pg'
 end
 
 

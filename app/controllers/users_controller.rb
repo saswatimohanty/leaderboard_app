@@ -1,11 +1,11 @@
 class UsersController <ApplicationController
   include LeaderboardMethod
 
-	def index
+  def index
     @users = User.all.order(total_commits: :desc)
   end
 
-	def create
+  def create
     @user = User.new(user_params)
 
     if @user.github_user?
@@ -27,16 +27,16 @@ class UsersController <ApplicationController
   end
 
   def destroy
-  	@user = User.find(params[:id])
-  	if @user.destroy
-  		flash[:success] = "#{@user.name} with github username '#{@user.username}' is removed from Leaderboard"
-  		redirect_to root_path
-  	end
+    @user = User.find(params[:id])
+    if @user.destroy
+      flash[:success] = "#{@user.name} with github username '#{@user.username}' is removed from Leaderboard"
+      redirect_to root_path
+    end
   end
 
   private
 
-  	def user_params
-  		params.require(:user).permit(:name, :username)
-  	end
+    def user_params
+      params.require(:user).permit(:name, :username)
+    end
 end
