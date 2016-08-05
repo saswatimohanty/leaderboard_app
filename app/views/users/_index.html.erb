@@ -1,12 +1,12 @@
 <% provide(:title, "Github Users") %>
 
 <div class='left-section'>
-  <%= form_for(User.new, remote: true, html: {method: 'post'})  do |f| %>
+  <%= form_for(User.new, remote: true, html: {method: 'post'}, id: 'submit')  do |f| %>
     <%= render partial: 'users/new', locals: {f: f} %>
   <% end %>
 </div>
 
-<h3 class = 'margin-10'> Leaderboard as per Github Contributions </h3>
+<h3> Leaderboard as per Github Contributions </h3>
 <div>
   <table class='leaderboard-table'>
     <thead>
@@ -29,7 +29,7 @@
           <td> <%= user.commits_made_today %> Commits </td>
           <td> <%= user.total_commits %> Commits </td>
           <td> 
-            <%= button_to user, method: :delete, remote: true, class: 'btn btn-danger', data: { confirm: 'Are you sure to remove?' } do %>
+            <%= button_to user, method: :delete, remote: true, class: 'btn btn-default', data: { confirm: 'Are you sure to remove?' } do %>
               <span class="glyphicon glyphicon-trash"></span>
             <% end %>
           </td>
