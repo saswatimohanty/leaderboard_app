@@ -21,15 +21,15 @@
     </thead>
 
     <tbody>
-      <% @users.each_with_index do |user, index| %>
+      <% @users.each do |user| %>
         <tr>
-          <td> <%= index + 1 %> </td>
+          <td> <%= user.rank %> </td>
           <td> <%= user.name %> </td>
           <td> <%= link_to user.username, "https://github.com/#{user.username}" %> </td>
           <td> <%= user.commits_made_today %> Commits </td>
           <td> <%= user.total_commits %> Commits </td>
           <td> 
-            <%= button_to user, method: :delete, remote: true, class: 'btn btn-default', data: { confirm: 'Are you sure to remove?' } do %>
+            <%= button_to user, method: :delete, remote: true, class: 'btn btn-default delete_user', data: { confirm: 'Are you sure to remove?' } do %>
               <span class="glyphicon glyphicon-trash"></span>
             <% end %>
           </td>
@@ -37,4 +37,9 @@
       <% end %>
     </tbody>
   </table>
+  <%= will_paginate @users %>
+</div>
+
+<div class='update-button-position'>
+  <%= button_to 'Update Leaderboard', update_users_path, class: 'button', method: :get %>
 </div>
