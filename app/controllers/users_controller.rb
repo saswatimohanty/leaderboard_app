@@ -29,9 +29,8 @@ class UsersController <ApplicationController
 
   def destroy
     @user = User.find(params[:id])
-    if @user.destroy
+    if @user.destroy and leaderboard.remove_member(@user.username)
       flash[:success] = "#{@user.name} with github username '#{@user.username}' is removed from Leaderboard"
-      $redis.FLUSHDB
       redirect_to root_path
     end
   end
