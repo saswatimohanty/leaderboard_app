@@ -1,12 +1,12 @@
 <% provide(:title, "Github Users") %>
 
 <div class='left-section'>
-  <%= form_for(User.new, remote: true, html: {method: 'post'}, id: 'submit')  do |f| %>
-    <%= render partial: 'users/new', locals: {f: f} %>
+  <%= form_for(User.new, remote: true, html: { method: 'post' }, id: 'submit')  do |f| %>
+    <%= render partial: 'users/new', locals: { f: f } %>
   <% end %>
 </div>
 
-<h3 class = 'margin-10'> Leaderboard as per Github Contributions </h3>
+<h3 class='margin-10'> Leaderboard as per Github Contributions </h3>
 
 <div class='update-button-position'>
   <%= button_to 'Update Leaderboard', update_users_path, class: 'button', method: :get %>
@@ -29,12 +29,12 @@
       <% @users.each do |user| %>
         <tr>
           <td> <%= user.rank %> </td>
-          <td> <%= user.name %> </td>
-          <td> <%= link_to user.username, "https://github.com/#{user.username}" %> </td>
+          <td> <%= link_to(user.name, edit_user_path(user), remote: true, data: { toggle: "modal", target: "#myModal" }, title: 'Edit Information', rel: 'tooltip') %> </td>
+          <td> <%= link_to user.username, "https://github.com/#{user.username}", title: 'Go to Github Page', rel: 'tooltip' %> </td>
           <td> <%= user.commits_made_today %> Commits </td>
           <td> <%= user.total_commits %> Commits </td>
           <td> 
-            <%= button_to user, method: :delete, remote: true, class: 'btn btn-default delete_user', data: { confirm: 'Are you sure to remove?' } do %>
+            <%= button_to user, method: :delete, remote: true, class: 'btn btn-danger delete-user', data: { confirm: 'Are you sure to remove?' } do %>
               <span class="glyphicon glyphicon-trash"></span>
             <% end %>
           </td>

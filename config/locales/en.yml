@@ -25,7 +25,10 @@ en:
   user:
     success:
       created: 'Successfully added user. Ranking will be as per contributions.'
+      updated: 'User is updated successfully on leaderboard.'
+      deleted: "%{name} with github username '%{username}' is removed from Leaderboard"
     error:
       not_created: 'Please enter your name and github username.'
       already_present: 'This Github user is already on leaderboard'
       invalid_github_username: 'This GitHub user doesnot exist. Please enter a valid github user.'
+      not_updated: 'User is not updated. Please try again with a valid Github username.'

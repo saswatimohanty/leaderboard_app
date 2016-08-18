@@ -27,10 +27,28 @@ class UsersController <ApplicationController
     end
   end
 
+  def edit
+    @user = User.where(id: params[:id]).first
+  end
+
+  def update
+    @user = User.where(id: params[:id]).first
+    username = params[:user][:username]
+    uri = URI("https://github.com/#{username}/")
+    response = Net::HTTP.get_response(uri)
+    if response.code == '404'
+      flash[:danger] = I18n.t 'user.error.not_updated'
+    else
+      @user.update_attributes(user_params)
+      flash[:success] = I18n.t 'user.success.updated'
+    end
+    redirect_to root_path
+  end
+
   def destroy
     @user = User.find(params[:id])
     if @user.destroy and leaderboard.remove_member(@user.username)
-      flash[:success] = "#{@user.name} with github username '#{@user.username}' is removed from Leaderboard"
+      flash[:success] = I18n.t 'user.success.deleted', name: @user.name, username: @user.username
       redirect_to root_path
     end
   end

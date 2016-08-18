@@ -1,0 +1,19 @@
+<div class="col-md-6 col-md-offset-3">
+  <%= form_for(@user, html: {method: 'put'}) do |f| %>
+
+    <div class='col-md-11'>
+      <%= f.label :name, 'New Name' %>
+      <%= f.text_field :name, required: true, class: 'form-control' %>
+    </div>
+
+    <div class='col-md-11'>
+      <%= f.label :username, 'New GitHub Username' %>
+      <%= f.text_field :username, required: true, class: 'form-control' %>
+    </div>
+
+    <div class='col-md-11'>
+      <%= f.submit 'Update Details', class: 'button' %>
+    </div>
+
+  <% end %> 
+</div>
